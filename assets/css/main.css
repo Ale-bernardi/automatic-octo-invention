@@ -1159,7 +1159,7 @@ input, select, textarea {
 			-ms-transition: -ms-transform 0.325s ease-in-out, -ms-filter 0.325s ease-in-out;
 			transition: transform 0.325s ease-in-out, filter 0.325s ease-in-out;
 			background-image: url("../../images/bg.jpg");
-			background-position: center;
+			background-position: 50% 20%;
 			background-size: cover;
 			background-repeat: no-repeat;
 			z-index: 1;
@@ -1602,6 +1602,61 @@ input, select, textarea {
 					background-color: rgba(255, 255, 255, 0.175);
 				}
 
+
+
+
+
+
+
+				#main article .back-arrow {
+					display: block;
+					position: absolute;
+					top: 0;
+					left: 0; /* Posizionata a sinistra, simmetrica rispetto alla X */
+					width: 4rem;
+					height: 4rem;
+					cursor: pointer;
+					text-indent: 4rem;
+					overflow: hidden;
+					white-space: nowrap;
+				}
+				
+				#main article .back-arrow:before {
+					-moz-transition: background-color 0.2s ease-in-out;
+					-webkit-transition: background-color 0.2s ease-in-out;
+					-ms-transition: background-color 0.2s ease-in-out;
+					transition: background-color 0.2s ease-in-out;
+					content: '';
+					display: block;
+					position: absolute;
+					top: 0.75rem;
+					left: 0.75rem;
+					width: 2.5rem;
+					height: 2.5rem;
+					border-radius: 100%;
+					background-position: center;
+					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20px' height='20px' viewBox='0 0 20 20' fill='none' stroke='%23aaaaaa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='12 4 4 10 12 16'/%3E%3C/svg%3E");
+					background-size: 20px 20px;
+					background-repeat: no-repeat;
+				}
+				
+				#main article .back-arrow:hover:before {
+					background-color: rgba(255, 255, 255, 0.075);
+				}
+				
+				#main article .back-arrow:active:before {
+					background-color: rgba(255, 255, 255, 0.175);
+				}
+				
+
+
+
+
+
+
+
+
+
 				@media screen and (max-width: 736px) {
 					#main article {
 						width: 100%;
@@ -1675,14 +1730,14 @@ input, select, textarea {
 		  .annate-links {
 			display: flex;
 			flex-direction: column; /* Impila i bottoni verticalmente */
-			align-items: center; /* Centra i bottoni */
+			align-items: flex-start; /* Centra i bottoni */
 			margin-top: 15px;
 		}
 		
 		.annate-links .btn {
 			display: block;
 			width: 150px;
-			text-align: center;
+			text-align: left;
 			padding: 10px;
 			margin: 5px 0;
 			text-decoration: none;
@@ -1698,5 +1753,81 @@ input, select, textarea {
 			background-color: #45a049 !important;
 			transform: scale(1.05);
 		}
+		
+		
+
+
+
+
+		.back-arrow {
+			position: absolute;
+			top: 1rem;
+			left: 1rem;
+			font-size: 1.5rem;
+			color: white;
+			cursor: pointer;
+			z-index: 10; /* Assicurati che sia sopra gli altri elementi */
+		}
+
+
+
+
+
+
+
+		.photo-gallery {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr); /* 3 colonne */
+			gap: 10px;
+			max-width: 900px;
+			margin: auto;
+		}
+		
+		.photo-gallery img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			border-radius: 10px;
+		}
+		
+		/* Disposizione immagini */
+		.photo-gallery img.large {
+			grid-row: span 2; /* Occupa 2 righe */
+		}
+		
+		/* Prima riga: grande a sinistra */
+		.photo-gallery img.large.left {
+			grid-column: span 2; /* Occupa 2 colonne */
+		}
+		
+		/* Seconda riga: grande a destra */
+		.photo-gallery img.large.right {
+			grid-column: 2 / span 2; /* Inizia alla seconda colonna e occupa 2 */
+		}
+		
+		/* Le piccole restano normali */
+		.photo-gallery img.small {
+			grid-column: span 1;
+			grid-row: span 1;
+		}
+		
+		/* Responsive per schermi piccoli */
+		@media (max-width: 600px) {
+			.photo-gallery {
+				grid-template-columns: 1fr;
+			}
+		
+			.photo-gallery img.large {
+				grid-column: span 1;
+				grid-row: span 1;
+			}
+		}
+
+
+
+
+
+
+
 		
 		

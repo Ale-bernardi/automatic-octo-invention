@@ -297,6 +297,16 @@
 						.on('click', function() {
 							location.hash = '';
 						});
+						
+
+						// Back arrow.
+$('<div class="back-arrow"></div>')
+  .appendTo($this)
+  .on('click', function(event) {
+    event.stopPropagation();
+    window.history.back();
+  });
+
 
 				// Prevent clicks from inside article from bubbling.
 					$this.on('click', function(event) {
@@ -399,3 +409,20 @@
 					});
 
 })(jQuery);
+
+
+
+
+
+
+
+document.getElementById("home-button").addEventListener("click", function(event) {
+    event.preventDefault(); // Impedisce che il link venga seguito
+    var messageDiv = document.getElementById("message");
+    messageDiv.innerHTML = "Non sapevo che funzione dare a questo pulsante quindi accontentati di questo gattino &nbsp;&nbsp;&nbsp;&nbsp; =＾● ⋏ ●＾=";
+    
+    // Dopo 2 secondi (2000 ms), il messaggio scompare
+    setTimeout(function() {
+        messageDiv.innerHTML = "";
+    }, 3000);
+});
