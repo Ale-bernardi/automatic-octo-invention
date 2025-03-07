@@ -434,3 +434,30 @@ document.getElementById("home-button").addEventListener("click", function(event)
 
 
 
+
+// 2) Lightbox immagini
+const images = document.querySelectorAll('#about img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+const lightboxClose = document.querySelector('.lightbox-close');
+
+images.forEach(img => {
+  img.addEventListener('click', () => {
+    lightbox.style.display = 'flex';
+    lightboxImg.src = img.src;
+  });
+});
+
+// Chiude il modal quando clicchi sulla X
+lightboxClose.addEventListener('click', (e) => {
+  e.stopPropagation(); // Impedisci la propagazione del click
+  lightbox.style.display = 'none';
+});
+
+// Chiude il modal cliccando sull'area scura attorno all'immagine
+lightbox.addEventListener('click', (e) => {
+  if(e.target === lightbox) {
+    e.stopPropagation(); // Impedisci la propagazione
+    lightbox.style.display = 'none';
+  }
+});

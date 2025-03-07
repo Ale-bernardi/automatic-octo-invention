@@ -1825,36 +1825,37 @@ input, select, textarea {
 
 
 
-		  /* Modal di base */
-.modal {
-  display: none; /* Nascosto di default */
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8); /* Sfondo semi-trasparente */
-  align-items: center;   /* Centra verticalmente */
-  justify-content: center; /* Centra orizzontalmente */
-}
-
-/* Immagine ingrandita */
-.modal-content {
-  max-width: 90%;
-  max-height: 90%;
-  margin: auto;
-  display: block;
-}
-
-/* Bottone di chiusura */
-.modal-close {
-  position: absolute;
-  top: 20px;
-  right: 35px;
-  color: #fff;
-  font-size: 40px;
-  font-weight: bold;
-  cursor: pointer;
-  user-select: none;
-}
+		  .lightbox {
+			display: none; /* Nascosto di default */
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.8); /* Sfondo semi-trasparente */
+			justify-content: center; /* Centra orizzontalmente */
+			align-items: center;     /* Centra verticalmente */
+			z-index: 1000;
+		  }
+		  
+		  .lightbox img {
+			max-width: 90%;
+			max-height: 90%;
+			border: 2px solid #fff;
+			border-radius: 8px;
+		  }
+		  
+		  .lightbox-close {
+			position: absolute;
+			top: 20px;
+			right: 40px;
+			font-size: 40px;
+			color: #fff;
+			cursor: pointer;
+			user-select: none;
+		  }
+		  
+		  .lightbox-close:hover {
+			color: #ccc;
+		  }
+		  
