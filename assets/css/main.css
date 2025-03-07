@@ -1712,10 +1712,10 @@ input, select, textarea {
 		}
 
 		#header .logo .custom-icon {
-			width: 70%;              // L'immagine occupa tutta la larghezza del contenitore
-			height: 70%;             // L'immagine occupa tutta l'altezza del contenitore
-			object-fit: cover;        // L'immagine si adatta al cerchio mantenendo il rapporto di aspetto
-			object-position: center;  // Centra l'immagine nel cerchio
+			width: 70%;              
+			height: 70%;             
+			object-fit: cover;        
+			object-position: center; 
 		  }
 
 
@@ -1859,3 +1859,35 @@ input, select, textarea {
 			color: #ccc;
 		  }
 		  
+
+
+
+
+
+		  /* Imposta la lightbox per immagini e video */
+.lightbox video {
+	display: none; /* Nascondiamo il video inizialmente */
+	max-width: 90%;
+	max-height: 90%;
+	border: 2px solid #fff;
+	border-radius: 8px;
+  }
+  
+  /* Quando il video è attivo, nasconde l'immagine */
+  .lightbox.video-active img {
+	display: none;
+  }
+  
+  /* Quando il video è attivo, mostra il video */
+  .lightbox.video-active video {
+	display: block;
+  }
+  
+
+
+
+
+
+
+
+  

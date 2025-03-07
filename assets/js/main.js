@@ -435,29 +435,79 @@ document.getElementById("home-button").addEventListener("click", function(event)
 
 
 
-// 2) Lightbox immagini
+// Seleziona gli elementi necessari
 const images = document.querySelectorAll('#about img');
 const lightbox = document.getElementById('lightbox');
 const lightboxImg = document.getElementById('lightbox-img');
 const lightboxClose = document.querySelector('.lightbox-close');
+const videoThumbnail = document.getElementById('video-thumbnail');
 
+// Aggiungi l'evento click a tutte le immagini della sezione "about"
 images.forEach(img => {
   img.addEventListener('click', () => {
+    // Se l'immagine cliccata è la thumbnail del video…
+    if (img === videoThumbnail) {
+      // Indica che vogliamo mostrare il video
+      lightbox.classList.add('video-active');
+      // Nascondi l'elemento immagine (lightboxImg) se visibile
+      lightboxImg.style.display = 'none';
+      // Rimuovi eventuale tag video già presente (per ricaricarlo da zero)
+      let existingVideo = lightbox.querySelector('video');
+      if (existingVideo) {
+        existingVideo.remove();
+      }
+      // Crea dinamicamente il tag video
+      let videoElement = document.createElement('video');
+      videoElement.setAttribute('controls', '');
+      videoElement.setAttribute('autoplay', '');
+      videoElement.style.maxWidth = '90%';
+      videoElement.style.maxHeight = '90%';
+      // Crea il tag source per il video
+      let source = document.createElement('source');
+      source.setAttribute('src', 'images/le_oliveee.mp4');
+      source.setAttribute('type', 'video/mp4');
+      videoElement.appendChild(source);
+      // Aggiungi il video alla lightbox
+      lightbox.appendChild(videoElement);
+    } else {
+      // Se è una normale immagine:
+      lightbox.classList.remove('video-active');
+      // Rimuovi eventuale video se presente
+      let existingVideo = lightbox.querySelector('video');
+      if (existingVideo) {
+         existingVideo.remove();
+      }
+      // Mostra l'immagine nella lightbox
+      lightboxImg.src = img.src;
+      lightboxImg.style.display = 'block';
+    }
+    // Mostra la lightbox
     lightbox.style.display = 'flex';
-    lightboxImg.src = img.src;
   });
 });
 
-// Chiude il modal quando clicchi sulla X
+// Gestione della chiusura della lightbox
 lightboxClose.addEventListener('click', (e) => {
-  e.stopPropagation(); // Impedisci la propagazione del click
-  lightbox.style.display = 'none';
+  e.stopPropagation();
+  closeLightbox();
 });
-
-// Chiude il modal cliccando sull'area scura attorno all'immagine
 lightbox.addEventListener('click', (e) => {
-  if(e.target === lightbox) {
-    e.stopPropagation(); // Impedisci la propagazione
-    lightbox.style.display = 'none';
+  if (e.target === lightbox) {
+    e.stopPropagation();
+    closeLightbox();
   }
 });
+
+function closeLightbox() {
+  lightbox.style.display = 'none';
+  // Se c'è un video, fermalo e rimuovilo
+  let existingVideo = lightbox.querySelector('video');
+  if (existingVideo) {
+    existingVideo.pause();
+    existingVideo.remove();
+  }
+  // Ripristina la visualizzazione dell'immagine (per eventuali prossimi click)
+  lightboxImg.style.display = 'block';
+  lightbox.classList.remove('video-active');
+}
+

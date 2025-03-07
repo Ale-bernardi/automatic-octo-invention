@@ -191,20 +191,31 @@
 		  <img src="images/foto3.jpg" alt="Piccola">
 		</div>
 	  
-		<!-- Blocco 2: grande a destra -->
+		<!-- Blocco 2: grande a destra (sostituito bg.jpg con il video) -->
 		<div class="row right">
-		  <img src="images/bg.jpg" alt="Grande">
+		  <img src="images/video-thumbnail.jpg" alt="Thumbnail Video" id="video-thumbnail">
 		  <img src="images/foto5.jpg" alt="Piccola">
 		  <img src="images/2024.jpg" alt="Piccola">
 		</div>
 	  
-		<!-- Blocco 3: grande a sinistra, ecc... -->
+		<!-- Blocco 3: grande a sinistra -->
 		<div class="row left">
-			<img src="images/foto6.jpg" alt="Grande">
-			<img src="images/foto7.jpg" alt="Piccola">
-			<img src="images/foto8.jpg" alt="Piccola">
-		  </div>
+		  <img src="images/foto6.jpg" alt="Grande">
+		  <img src="images/foto7.jpg" alt="Piccola">
+		  <img src="images/foto8.jpg" alt="Piccola">
+		</div>
 	  </article>
+	  
+	  <!-- Lightbox per immagini e video -->
+	  <div class="lightbox" id="lightbox">
+		<span class="lightbox-close">&times;</span>
+		<img id="lightbox-img">
+		<video id="lightbox-video" controls>
+		  <source src="images/le_oliveee.mp4" type="video/mp4">
+		  Il tuo browser non supporta il tag video.
+		</video>
+	  </div>
+	  
 
 
 
