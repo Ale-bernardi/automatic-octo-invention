@@ -1888,6 +1888,12 @@ input, select, textarea {
 
 
 
+  img, .video-container {
+	cursor: pointer;
+  }
+
+  
+
 
 
   
